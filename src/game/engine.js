@@ -145,7 +145,7 @@ function endNight(state) {
   gameplay.ended = true
   gameplay.phase = 'summary'
   progress.highestCompletedNight = Math.max(progress.highestCompletedNight, gameplay.nightNumber)
-  progress.unlockedNight = Math.min(meta.nightDefinition.number + 1, 2)
+  progress.unlockedNight = Math.min(meta.nightDefinition.number + 1, meta.totalNights)
 
   Object.entries(gameplay.buildingState).forEach(([key, value]) => {
     if (value) progress.buildingFlags[key] = value
@@ -211,7 +211,7 @@ export function createEngine(state, render) {
       sync()
     },
     continueToNextNight() {
-      const nextNightNumber = Math.min(state.gameplay.nightNumber + 1, 2)
+      const nextNightNumber = Math.min(state.gameplay.nightNumber + 1, state.meta.totalNights)
       const nextState = resetForNight(state, nextNightNumber)
       Object.assign(state, nextState)
       sync()

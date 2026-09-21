@@ -43,7 +43,8 @@ export function saveProgress(progress) {
 }
 
 export function createSessionState(progress) {
-  const availableNightNumber = Math.min(progress.unlockedNight, nightDefinitions.length)
+  const totalNights = nightDefinitions.length
+  const availableNightNumber = Math.min(progress.unlockedNight, totalNights)
   const nightDefinition =
     nightDefinitions.find((night) => night.number === availableNightNumber) ?? nightDefinitions[0]
 
@@ -79,6 +80,7 @@ export function createSessionState(progress) {
     progress,
     meta: {
       nightDefinition,
+      totalNights,
       gameDuration: NIGHT_END_MINUTE,
     },
   }
