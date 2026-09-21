@@ -1,5 +1,5 @@
 import { createEngine } from './engine.js'
-import { nightDefinitions } from './content.js'
+import { STORAGE_KEY, nightDefinitions } from './content.js'
 import { createSessionState, loadProgress, saveProgress } from './state.js'
 
 export function createGameController(view) {
@@ -15,7 +15,7 @@ export function createGameController(view) {
     onNextNight: () => engine.continueToNextNight(),
     onRestartNight: () => engine.restartCurrentNight(),
     onResetProgress: () => {
-      window.localStorage.clear()
+      window.localStorage.removeItem(STORAGE_KEY)
       Object.assign(state.progress, loadProgress())
       Object.assign(state, createSessionState(state.progress))
       view.render(state)
