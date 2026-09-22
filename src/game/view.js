@@ -37,12 +37,11 @@ function renderCameraTabs(cameras, selectedCameraId) {
 }
 
 function renderCameraFeed(camera) {
-  const imageSrc = escapeAttribute(camera.image)
   const imageAlt = escapeAttribute(`${camera.name} ${camera.location}: ${camera.description}`)
 
   return `
     <div class="camera-feed camera-feed--${camera.status.toLowerCase().replaceAll(' ', '-')}">
-      <img class="camera-feed__image" src="${imageSrc}" alt="${imageAlt}" />
+      <img class="camera-feed__image" src="${camera.image}" alt="${imageAlt}" />
       <div class="camera-feed__overlay" aria-hidden="true"></div>
       <div class="camera-feed__noise" aria-hidden="true"></div>
       <div class="camera-feed__meta">
