@@ -103,7 +103,7 @@ button:focus-visible {
 
 .topbar {
   border-radius: 1.3rem;
-  padding: 1.25rem 1.5rem;
+  padding: 1rem 1.35rem;
   display: flex;
   justify-content: space-between;
   align-items: end;
@@ -176,7 +176,7 @@ p {
 
 .overview {
   border-radius: 1.2rem;
-  padding: 1rem;
+  padding: 0.85rem;
 }
 
 .resource-card {
@@ -364,6 +364,8 @@ p {
 
 .panel__tabs button {
   flex: 1;
+  padding: 0.5rem 0.75rem;
+  line-height: 1.15;
 }
 
 .panel__body {
@@ -458,7 +460,7 @@ p {
   }
 
   .topbar {
-    padding: 0.65rem 1rem;
+    padding: 0.55rem 0.9rem;
     align-items: center;
   }
 
@@ -482,7 +484,7 @@ p {
   }
 
   .overview {
-    padding: 0.55rem;
+    padding: 0.5rem;
     gap: 0.5rem;
   }
 
@@ -571,6 +573,11 @@ p {
 
   .panel h3 {
     font-size: 0.95rem;
+  }
+
+  .panel__tabs button {
+    padding: 0.35rem 0.55rem;
+    font-size: 0.82rem;
   }
 
   .panel__body {
