@@ -3,6 +3,14 @@ import { formatMinute } from './engine.js'
 
 const appVersion = import.meta.env.VITE_VERSION_TAG || 'development'
 
+function escapeAttribute(value) {
+  return String(value)
+    .replaceAll('&', '&amp;')
+    .replaceAll('"', '&quot;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+}
+
 function createMeter(value) {
   return `
     <div class="meter" aria-hidden="true">
@@ -29,11 +37,14 @@ function renderCameraTabs(cameras, selectedCameraId) {
 }
 
 function renderCameraFeed(camera) {
+  const imageSrc = escapeAttribute(camera.image)
+  const imageAlt = escapeAttribute(`${camera.name} ${camera.location}: ${camera.description}`)
+
   return `
     <div class="camera-feed camera-feed--${camera.status.toLowerCase().replaceAll(' ', '-')}">
-      <img class="camera-feed__image" src="${camera.image}" alt="${camera.name} ${camera.location}: ${camera.description}" />
-      <div class="camera-feed__overlay"></div>
-      <div class="camera-feed__noise"></div>
+      <img class="camera-feed__image" src="${imageSrc}" alt="${imageAlt}" />
+      <div class="camera-feed__overlay" aria-hidden="true"></div>
+      <div class="camera-feed__noise" aria-hidden="true"></div>
       <div class="camera-feed__meta">
         <span>${camera.name}</span>
         <span>${camera.location}</span>
