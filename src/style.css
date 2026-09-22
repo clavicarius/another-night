@@ -108,6 +108,8 @@ button:focus-visible {
   justify-content: space-between;
   align-items: end;
   gap: 1rem;
+  max-height: 10rem;
+  overflow: hidden;
 }
 
 .topbar__brand {
@@ -177,6 +179,8 @@ p {
 .overview {
   border-radius: 1.2rem;
   padding: 1rem;
+  max-height: 9rem;
+  overflow: hidden;
 }
 
 .resource-card {
@@ -364,6 +368,11 @@ p {
 
 .panel__tabs button {
   flex: 1;
+  min-height: 2.6rem;
+  max-height: 2.6rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .panel__body {
@@ -460,6 +469,7 @@ p {
   .topbar {
     padding: 0.65rem 1rem;
     align-items: center;
+    max-height: 6rem;
   }
 
   .topbar__logo {
@@ -484,6 +494,7 @@ p {
   .overview {
     padding: 0.55rem;
     gap: 0.5rem;
+    max-height: 5rem;
   }
 
   .resource-card {
@@ -573,6 +584,11 @@ p {
     font-size: 0.95rem;
   }
 
+  .panel__tabs button {
+    min-height: 2rem;
+    max-height: 2rem;
+  }
+
   .panel__body {
     min-height: 0;
     overflow: auto;
@@ -602,6 +618,8 @@ p {
   .overview {
     flex-direction: column;
     align-items: stretch;
+    max-height: none;
+    overflow: visible;
   }
 
   .grid {
