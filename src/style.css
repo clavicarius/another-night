@@ -263,13 +263,32 @@ p {
   border-radius: 1rem;
   border: 1px solid rgba(255, 255, 255, 0.06);
   background:
-    linear-gradient(180deg, rgba(160, 183, 255, 0.12) 0%, rgba(24, 36, 59, 0.95) 100%),
+    linear-gradient(180deg, rgba(160, 183, 255, 0.08) 0%, rgba(24, 36, 59, 0.82) 100%),
     linear-gradient(135deg, rgba(255, 255, 255, 0.03), transparent);
 }
 
+.camera-feed__image,
+.camera-feed__overlay,
 .camera-feed__noise {
   position: absolute;
   inset: 0;
+}
+
+.camera-feed__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.7) contrast(1.08) brightness(0.72);
+}
+
+.camera-feed__overlay {
+  background:
+    radial-gradient(circle at top, rgba(194, 217, 255, 0.16), transparent 38%),
+    linear-gradient(180deg, rgba(13, 21, 33, 0.04) 0%, rgba(4, 7, 12, 0.62) 100%);
+  mix-blend-mode: screen;
+}
+
+.camera-feed__noise {
   background:
     linear-gradient(rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01)),
     repeating-linear-gradient(
@@ -282,10 +301,30 @@ p {
   opacity: 0.7;
 }
 
+.camera-feed::before,
+.camera-feed::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.camera-feed::before {
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04), transparent 18%, transparent 82%, rgba(255, 255, 255, 0.04)),
+    radial-gradient(circle at center, transparent 52%, rgba(4, 8, 14, 0.45) 100%);
+  opacity: 0.9;
+}
+
+.camera-feed::after {
+  opacity: 0;
+  transition: opacity 180ms ease;
+}
+
 .camera-feed__meta,
 .camera-feed__body {
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 
 .camera-feed__meta {
@@ -307,15 +346,73 @@ p {
   font-size: clamp(1.9rem, 3vw, 3rem);
 }
 
+.camera-feed--bereit strong {
+  color: #dce3ff;
+}
+
 .camera-feed--bewegung strong,
 .sensor--warning strong {
   color: var(--warning);
+}
+
+.camera-feed--bewegung .camera-feed__image {
+  transform: scale(1.018) translateX(-0.45rem);
+  filter: saturate(0.74) contrast(1.12) brightness(0.68) blur(0.9px);
+}
+
+.camera-feed--bewegung::after {
+  opacity: 0.45;
+  background:
+    linear-gradient(90deg, transparent 0 58%, rgba(255, 231, 168, 0.18) 68%, transparent 82%),
+    linear-gradient(135deg, transparent 32%, rgba(255, 221, 133, 0.12) 48%, transparent 62%);
 }
 
 .camera-feed--signal-verloren strong,
 .camera-feed--störung strong,
 .sensor--danger strong {
   color: var(--danger);
+}
+
+.camera-feed--störung .camera-feed__overlay {
+  background:
+    linear-gradient(180deg, rgba(255, 130, 148, 0.12) 0%, rgba(5, 8, 13, 0.7) 100%),
+    repeating-linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.1) 0,
+      rgba(255, 255, 255, 0.1) 4px,
+      transparent 4px,
+      transparent 16px
+    );
+}
+
+.camera-feed--störung::after {
+  opacity: 0.7;
+  background:
+    linear-gradient(180deg, transparent 0 30%, rgba(255, 255, 255, 0.08) 30% 34%, transparent 34% 62%, rgba(255, 128, 148, 0.14) 62% 66%, transparent 66%),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04), transparent 16%, transparent 84%, rgba(255, 255, 255, 0.04));
+}
+
+.camera-feed--signal-verloren .camera-feed__image {
+  filter: saturate(0.2) brightness(0.12) contrast(1.05);
+}
+
+.camera-feed--signal-verloren .camera-feed__overlay {
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.42) 0%, rgba(0, 0, 0, 0.82) 100%),
+    radial-gradient(circle at center, rgba(136, 162, 255, 0.08), transparent 55%);
+}
+
+.camera-feed--signal-verloren::after {
+  opacity: 0.85;
+  background:
+    radial-gradient(circle at center, rgba(255, 255, 255, 0.05), transparent 30%),
+    repeating-linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.06) 0,
+      rgba(255, 255, 255, 0.06) 2px,
+      transparent 2px,
+      transparent 6px
+    );
 }
 
 .camera-feed--normal strong,
@@ -325,6 +422,13 @@ p {
 
 .camera-feed--unbekannt strong {
   color: var(--accent);
+}
+
+.camera-feed--unbekannt::after {
+  opacity: 0.5;
+  background:
+    linear-gradient(90deg, transparent 0 64%, rgba(136, 162, 255, 0.2) 72%, rgba(136, 162, 255, 0.06) 82%, transparent 92%),
+    linear-gradient(180deg, transparent 8%, rgba(255, 255, 255, 0.06) 28%, transparent 48%);
 }
 
 .decision-card {

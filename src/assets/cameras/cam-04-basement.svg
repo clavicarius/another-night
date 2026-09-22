@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="CAM 04 Keller">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#2f363f"/><stop offset="58%" stop-color="#181d23"/><stop offset="100%" stop-color="#090b0f"/></linearGradient>
+    <linearGradient id="stairs" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#2a313a"/><stop offset="100%" stop-color="#0b0e12"/></linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <polygon points="0,0 950,0 700,430 0,900" fill="#20262e"/>
+  <polygon points="950,0 1600,0 1600,900 700,430" fill="#14191f"/>
+  <g fill="url(#stairs)">
+    <polygon points="140,900 740,480 1020,480 430,900"/>
+    <rect x="520" y="480" width="520" height="42"/>
+    <rect x="472" y="550" width="470" height="42"/>
+    <rect x="425" y="620" width="420" height="42"/>
+    <rect x="376" y="690" width="370" height="42"/>
+    <rect x="328" y="760" width="320" height="42"/>
+  </g>
+  <rect x="1090" y="255" width="260" height="420" rx="10" fill="#252b33" stroke="#54606d" stroke-width="8"/>
+  <rect x="1165" y="330" width="108" height="200" fill="#151a1f"/>
+  <circle cx="1292" cy="468" r="9" fill="#72818f"/>
+  <g stroke="#667280" stroke-width="18" opacity="0.45" fill="none">
+    <path d="M220 120h500"/>
+    <path d="M1200 100v180"/>
+    <path d="M1320 110v130"/>
+  </g>
+  <g stroke="#3a434e" stroke-width="8" opacity="0.6"><path d="M780 120h360"/><path d="M760 160h320"/><path d="M800 200h280"/></g>
+  <g fill="#aec3d0" opacity="0.15"><ellipse cx="930" cy="305" rx="70" ry="150"/><ellipse cx="510" cy="405" rx="35" ry="110"/></g>
+  <rect x="620" y="75" width="250" height="22" rx="11" fill="#d8edf7" opacity="0.5"/>
+</svg>

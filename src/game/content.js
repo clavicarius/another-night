@@ -1,14 +1,22 @@
+import cam01Entrance from '../assets/cameras/cam-01-entrance.svg'
+import cam02Hallway from '../assets/cameras/cam-02-hallway.svg'
+import cam03Office from '../assets/cameras/cam-03-office.svg'
+import cam04Basement from '../assets/cameras/cam-04-basement.svg'
+import cam05Storage from '../assets/cameras/cam-05-storage.svg'
+import cam06Backyard from '../assets/cameras/cam-06-backyard.svg'
+import cam07Room4 from '../assets/cameras/cam-07-room4.svg'
+
 export const STORAGE_KEY = 'another-night-progress'
 export const TICK_INTERVAL_MS = 1000
 export const NIGHT_END_MINUTE = 6 * 60
 
 export const cameraDefinitions = [
-  { id: 'cam-01', name: 'CAM 01', location: 'Eingang', description: 'Leere Lobby, flackernde Neonröhre.' },
-  { id: 'cam-02', name: 'CAM 02', location: 'Flur', description: 'Langer Flur mit mehreren Türen.' },
-  { id: 'cam-03', name: 'CAM 03', location: 'Büro', description: 'Schreibtische, Monitore und Aktenregale.' },
-  { id: 'cam-04', name: 'CAM 04', location: 'Keller', description: 'Feuchte Stufen, schwere Metalltür.' },
-  { id: 'cam-05', name: 'CAM 05', location: 'Lager', description: 'Regale mit anonymen Kisten.' },
-  { id: 'cam-06', name: 'CAM 06', location: 'Hinterhof', description: 'Ein verschlossener Zaun im Regen.' },
+  { id: 'cam-01', name: 'CAM 01', location: 'Eingang', description: 'Leere Lobby, flackernde Neonröhre.', image: cam01Entrance },
+  { id: 'cam-02', name: 'CAM 02', location: 'Flur', description: 'Langer Flur mit mehreren Türen.', image: cam02Hallway },
+  { id: 'cam-03', name: 'CAM 03', location: 'Büro', description: 'Schreibtische, Monitore und Aktenregale.', image: cam03Office },
+  { id: 'cam-04', name: 'CAM 04', location: 'Keller', description: 'Feuchte Stufen, schwere Metalltür.', image: cam04Basement },
+  { id: 'cam-05', name: 'CAM 05', location: 'Lager', description: 'Regale mit anonymen Kisten.', image: cam05Storage },
+  { id: 'cam-06', name: 'CAM 06', location: 'Hinterhof', description: 'Ein verschlossener Zaun im Regen.', image: cam06Backyard },
 ]
 
 export const sensorDefinitions = [
@@ -254,6 +262,7 @@ export const nightDefinitions = [
             name: 'CAM 07',
             location: 'Raum 4',
             description: 'Ein Raum ohne Bauplan, mit einer zweiten Kontrollstation.',
+            image: cam07Room4,
             status: 'UNBEKANNT',
             detail: 'Auf dem Monitor läuft deine aktuelle Schicht mit einigen Minuten Verzögerung.',
           },

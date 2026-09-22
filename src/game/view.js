@@ -31,6 +31,8 @@ function renderCameraTabs(cameras, selectedCameraId) {
 function renderCameraFeed(camera) {
   return `
     <div class="camera-feed camera-feed--${camera.status.toLowerCase().replaceAll(' ', '-')}">
+      <img class="camera-feed__image" src="${camera.image}" alt="" />
+      <div class="camera-feed__overlay"></div>
       <div class="camera-feed__noise"></div>
       <div class="camera-feed__meta">
         <span>${camera.name}</span>
