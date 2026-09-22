@@ -68,9 +68,25 @@ button:focus-visible {
 }
 
 .shell {
+  position: relative;
+  isolation: isolate;
   padding: 1.25rem;
   display: grid;
   gap: 1rem;
+}
+
+.shell-watermark {
+  position: fixed;
+  inset: 0;
+  background: var(--brand-watermark) center / min(38vmin, 320px) no-repeat;
+  opacity: 0.05;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.shell > *:not(.shell-watermark) {
+  position: relative;
+  z-index: 1;
 }
 
 .topbar,
@@ -92,6 +108,19 @@ button:focus-visible {
   justify-content: space-between;
   align-items: end;
   gap: 1rem;
+}
+
+.topbar__brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.topbar__logo {
+  height: 2.5rem;
+  width: auto;
+  object-fit: contain;
+  flex-shrink: 0;
 }
 
 .eyebrow {
@@ -179,6 +208,12 @@ p {
   padding: 1.5rem;
   display: grid;
   gap: 1rem;
+}
+
+.intro-card__logo {
+  width: min(100%, 28rem);
+  margin: 0 auto;
+  object-fit: contain;
 }
 
 .intro-card ul {
@@ -417,9 +452,18 @@ p {
     overflow: hidden;
   }
 
+  .shell-watermark {
+    background-size: min(32vmin, 260px);
+    opacity: 0.04;
+  }
+
   .topbar {
     padding: 0.65rem 1rem;
     align-items: center;
+  }
+
+  .topbar__logo {
+    height: 2rem;
   }
 
   .topbar h1 {
