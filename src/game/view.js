@@ -31,7 +31,7 @@ function renderCameraTabs(cameras, selectedCameraId) {
 function renderCameraFeed(camera) {
   return `
     <div class="camera-feed camera-feed--${camera.status.toLowerCase().replaceAll(' ', '-')}">
-      <img class="camera-feed__image" alt="" />
+      <img class="camera-feed__image" alt="" aria-hidden="true" />
       <div class="camera-feed__overlay" aria-hidden="true"></div>
       <div class="camera-feed__noise" aria-hidden="true"></div>
       <div class="camera-feed__meta">
@@ -332,7 +332,6 @@ export function createGameView(root) {
       const feedImage = root.querySelector('.camera-feed__image')
       if (feedImage && selectedCamera) {
         feedImage.src = selectedCamera.image
-        feedImage.alt = `${selectedCamera.name} ${selectedCamera.location}: ${selectedCamera.description}`
       }
     },
   }
