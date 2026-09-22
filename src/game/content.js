@@ -39,6 +39,13 @@ export const nightDefinitions = [
     id: 'night-1',
     number: 1,
     title: 'Nacht 1 – Dienstantritt',
+    teaser: {
+      title: 'Teaser',
+      lines: [
+        'Another night. Another shift. Something is wrong.',
+        'Überwache das Gebäude bis 06:00 Uhr. Beobachte genau. Vertraue nichts.',
+      ],
+    },
     intro:
       'Die erste Schicht beginnt unspektakulär. Das Handbuch fehlt, aber das System läuft. Kurz vor Mitternacht blinkt eine Notiz auf: "Nicht jedem Sensor glauben."',
     outro:
@@ -162,6 +169,13 @@ export const nightDefinitions = [
     id: 'night-2',
     number: 2,
     title: 'Nacht 2 – Verzögerte Aufzeichnung',
+    teaser: {
+      title: 'Teaser',
+      lines: [
+        'Another night. Another shift. Something is wrong.',
+        'Überwache das Gebäude bis 06:00 Uhr. Beobachte genau. Vertraue nichts.',
+      ],
+    },
     intro:
       'Die zweite Nacht startet mit einem bereits geöffneten Verlauf. Einige Einträge wurden gelöscht, aber nicht sauber genug.',
     outro:
