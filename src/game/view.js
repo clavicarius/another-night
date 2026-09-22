@@ -231,11 +231,16 @@ export function createGameView(root) {
               ? `
                 <section class="intro-card">
                   <img class="intro-card__logo" src="${branding.appLogo}" alt="Another Night" />
-                  <article class="teaser-card">
-                    <p class="eyebrow">Teaser</p>
-                    <p>Another night. Another shift. Something is wrong.</p>
-                    <p>Überwache das Gebäude bis 06:00 Uhr. Beobachte genau. Vertraue nichts.</p>
-                  </article>
+                  ${
+                    state.meta.nightDefinition.teaser
+                      ? `
+                        <article class="teaser-card">
+                          <p class="eyebrow">${state.meta.nightDefinition.teaser.title}</p>
+                          ${state.meta.nightDefinition.teaser.lines.map((line) => `<p>${line}</p>`).join('')}
+                        </article>
+                      `
+                      : ''
+                  }
                   <p>${state.meta.nightDefinition.intro}</p>
                   <ul>
                     ${state.meta.nightDefinition.briefing.map((item) => `<li>${item}</li>`).join('')}
