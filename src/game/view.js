@@ -329,8 +329,8 @@ export function createGameView(root) {
         </div>
       `
 
-      const feedImage = root.querySelector('.camera-feed__image')
-      if (feedImage && selectedCamera) {
+      const feedImage = root.querySelector('.monitor .camera-feed__image')
+      if (feedImage && selectedCamera?.image) {
         feedImage.src = selectedCamera.image
       }
     },
