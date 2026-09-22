@@ -1,0 +1,86 @@
+name: Versioning
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+concurrency:
+  group: versioning-${{ github.event.pull_request.number || 'main' }}
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  version:
+    name: Compute and publish version
+    if: >-
+      github.event_name == 'pull_request' ||
+      (github.event_name == 'push' &&
+      github.ref == 'refs/heads/main' &&
+      github.actor != 'github-actions[bot]')
+    runs-on: ubuntu-latest
+    outputs:
+      next-tag: ${{ steps.version.outputs.next-tag }}
+      published: ${{ steps.publish.outputs.published || 'false' }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Compute version
+        id: version
+        uses: ./.github/actions/compute-version
+
+      - name: Report dry run
+        if: github.event_name == 'pull_request'
+        env:
+          LATEST_TAG: ${{ steps.version.outputs.latest-tag }}
+          NEXT_TAG: ${{ steps.version.outputs.next-tag }}
+          TAG_EXISTS: ${{ steps.version.outputs.tag-exists }}
+        run: |
+          echo "Latest semantic tag: ${LATEST_TAG:-none}"
+          echo "Next version tag: $NEXT_TAG"
+          echo "Version tag already exists: $TAG_EXISTS"
+
+      - name: Create and push version tag
+        id: publish
+        if: >-
+          github.event_name == 'push' &&
+          github.ref == 'refs/heads/main' &&
+          steps.version.outputs.tag-exists != 'true'
+        env:
+          NEXT_TAG: ${{ steps.version.outputs.next-tag }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git tag "$NEXT_TAG" "$GITHUB_SHA"
+          git push origin "refs/tags/$NEXT_TAG"
+          echo "published=true" >> "$GITHUB_OUTPUT"
+
+      - name: Report idempotent result
+        if: >-
+          github.event_name == 'push' &&
+          github.ref == 'refs/heads/main' &&
+          steps.version.outputs.tag-exists == 'true'
+        run: echo "Version tag ${{ steps.version.outputs.next-tag }} already exists."
+
+  deploy-pages:
+    name: Deploy GitHub Pages
+    needs: version
+    if: >-
+      github.event_name == 'push' &&
+      github.ref == 'refs/heads/main' &&
+      needs.version.outputs.published == 'true'
+    uses: ./.github/workflows/deploy.yml
+    with:
+      version-tag: ${{ needs.version.outputs.next-tag }}
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
