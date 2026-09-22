@@ -1,5 +1,5 @@
 import './style.css'
-import favicon from './assets/another-night-favicon.png'
+import { branding } from './branding.js'
 import { createGameController } from './game/controller.js'
 import { createGameView } from './game/view.js'
 
@@ -7,7 +7,7 @@ const faviconLink =
   document.querySelector('link[rel="icon"]') || document.createElement('link')
 faviconLink.rel = 'icon'
 faviconLink.type = 'image/png'
-faviconLink.href = favicon
+faviconLink.href = branding.favicon
 if (!faviconLink.parentNode) {
   document.head.append(faviconLink)
 }
