@@ -226,7 +226,7 @@ export function createGameView(root) {
                   <article class="teaser-card">
                     <p class="eyebrow">Teaser</p>
                     <p>Another night. Another shift. Something is wrong.</p>
-                    <p>Your shift starts at midnight. It ends at 06:00. If you’re lucky.</p>
+                    <p>Überwache das Gebäude bis 06:00 Uhr. Beobachte genau. Vertraue nichts.</p>
                   </article>
                   <p>${state.meta.nightDefinition.intro}</p>
                   <ul>
