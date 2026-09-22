@@ -109,7 +109,6 @@ button:focus-visible {
   align-items: end;
   gap: 1rem;
   max-height: 10rem;
-  overflow: hidden;
 }
 
 .topbar__brand {
@@ -180,7 +179,6 @@ p {
   border-radius: 1.2rem;
   padding: 1rem;
   max-height: 9rem;
-  overflow: hidden;
 }
 
 .resource-card {
@@ -370,9 +368,6 @@ p {
   flex: 1;
   min-height: 2.6rem;
   max-height: 2.6rem;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .panel__body {
@@ -619,7 +614,6 @@ p {
     flex-direction: column;
     align-items: stretch;
     max-height: none;
-    overflow: visible;
   }
 
   .grid {
