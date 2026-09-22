@@ -3,14 +3,6 @@ import { formatMinute } from './engine.js'
 
 const appVersion = import.meta.env.VITE_VERSION_TAG || 'development'
 
-function escapeAttribute(value) {
-  return String(value)
-    .replaceAll('&', '&amp;')
-    .replaceAll('"', '&quot;')
-    .replaceAll('<', '&lt;')
-    .replaceAll('>', '&gt;')
-}
-
 function createMeter(value) {
   return `
     <div class="meter" aria-hidden="true">
@@ -37,11 +29,9 @@ function renderCameraTabs(cameras, selectedCameraId) {
 }
 
 function renderCameraFeed(camera) {
-  const imageAlt = escapeAttribute(`${camera.name} ${camera.location}: ${camera.description}`)
-
   return `
     <div class="camera-feed camera-feed--${camera.status.toLowerCase().replaceAll(' ', '-')}">
-      <img class="camera-feed__image" src="${camera.image}" alt="${imageAlt}" />
+      <img class="camera-feed__image" alt="" />
       <div class="camera-feed__overlay" aria-hidden="true"></div>
       <div class="camera-feed__noise" aria-hidden="true"></div>
       <div class="camera-feed__meta">
@@ -338,6 +328,12 @@ export function createGameView(root) {
           </footer>
         </div>
       `
+
+      const feedImage = root.querySelector('.camera-feed__image')
+      if (feedImage && selectedCamera) {
+        feedImage.src = selectedCamera.image
+        feedImage.alt = `${selectedCamera.name} ${selectedCamera.location}: ${selectedCamera.description}`
+      }
     },
   }
 }
