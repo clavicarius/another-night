@@ -223,6 +223,11 @@ export function createGameView(root) {
             state.gameplay.phase === 'intro'
               ? `
                 <section class="intro-card">
+                  <article class="teaser-card">
+                    <p class="eyebrow">Teaser</p>
+                    <p>Another night. Another shift. Something is wrong.</p>
+                    <p>Überwache das Gebäude bis 06:00 Uhr. Beobachte genau. Vertraue nichts.</p>
+                  </article>
                   <p>${state.meta.nightDefinition.intro}</p>
                   <ul>
                     ${state.meta.nightDefinition.briefing.map((item) => `<li>${item}</li>`).join('')}
