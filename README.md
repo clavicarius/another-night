@@ -34,4 +34,4 @@ If you’re lucky.
 
 Die technischen Details zu Entwicklung, Build und Hosting stehen in:
 
-- [/docs/technical.md](./docs/technical.md)
+- [Technische Dokumentation](./docs/technical.md)
