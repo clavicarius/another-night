@@ -391,6 +391,12 @@ p {
   flex-wrap: wrap;
 }
 
+.app-footer {
+  text-align: center;
+  color: var(--text-dim);
+  font-size: 0.8rem;
+}
+
 @media (max-height: 820px) and (min-width: 981px) {
   button {
     padding: 0.65rem 0.85rem;
