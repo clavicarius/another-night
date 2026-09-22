@@ -1,3 +1,4 @@
+import { branding } from '../branding.js'
 import { formatMinute } from './engine.js'
 
 const appVersion = import.meta.env.VITE_VERSION_TAG || 'development'
@@ -181,11 +182,15 @@ export function createGameView(root) {
         state.gameplay.cameras[0]
 
       root.innerHTML = `
-        <div class="shell">
+        <div class="shell" style="--brand-watermark: url('${branding.emblem}')">
+          <div class="shell-watermark" aria-hidden="true"></div>
           <header class="topbar">
-            <div>
-              <p class="eyebrow">Another Night</p>
-              <h1>${state.meta.nightDefinition.title}</h1>
+            <div class="topbar__brand">
+              <img class="topbar__logo" src="${branding.favicon}" alt="Another Night" />
+              <div>
+                <p class="eyebrow">Another Night</p>
+                <h1>${state.meta.nightDefinition.title}</h1>
+              </div>
             </div>
             <div class="topbar__status">
               <div class="status-box">
@@ -225,6 +230,7 @@ export function createGameView(root) {
             state.gameplay.phase === 'intro'
               ? `
                 <section class="intro-card">
+                  <img class="intro-card__logo" src="${branding.appLogo}" alt="Another Night" />
                   <article class="teaser-card">
                     <p class="eyebrow">Teaser</p>
                     <p>Another night. Another shift. Something is wrong.</p>
