@@ -6,17 +6,32 @@ Atmosphärisches, storygetriebenes Browsergame über eine mysteriöse Nachtschic
 
 - [Hosted app (GitHub Pages)](https://clavicarius.github.io/another-night/)
 
-## Entwicklung
+## Teaser
 
-```bash
-npm install
-npm run dev
-```
+Another night. Another shift. Something is wrong.
 
-## Build
+Du hast nur eine Aufgabe: Überwache das Gebäude bis 06:00 Uhr.  
+Kameras. Sensoren. Türen. Bewegungsmelder.
 
-```bash
-npm run build
-```
+Am Anfang ist alles normal.  
+Dann beginnen die Informationen nicht mehr zusammenzupassen.
 
-Das Projekt ist als vollständig clientseitige Vite-Anwendung aufgebaut und kann über statische Auslieferung, z. B. GitHub Pages, veröffentlicht werden.
+Eine Kamera zeigt einen leeren Raum.  
+Der Sensor meldet Bewegung.  
+Eine Tür öffnet sich, obwohl niemand dort sein dürfte.
+
+Du kannst reagieren.  
+Aber jede Entscheidung verändert die Nacht.
+
+Beobachte genau. Vertraue nichts.  
+Und frag dich, warum du wirklich hier bist.
+
+Your shift starts at midnight.  
+It ends at 06:00.  
+If you’re lucky.
+
+## Technische Informationen
+
+Die technischen Details zu Entwicklung, Build und Hosting stehen in:
+
+- [/docs/technical.md](./docs/technical.md)
