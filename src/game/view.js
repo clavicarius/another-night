@@ -1,5 +1,7 @@
 import { formatMinute } from './engine.js'
 
+const appVersion = import.meta.env.VITE_VERSION_TAG || 'development'
+
 function createMeter(value) {
   return `
     <div class="meter" aria-hidden="true">
@@ -307,6 +309,10 @@ export function createGameView(root) {
           }
 
           ${state.gameplay.ended ? renderSummary(state) : ''}
+
+          <footer class="app-footer">
+            <small>Version ${appVersion}</small>
+          </footer>
         </div>
       `
     },
