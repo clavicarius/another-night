@@ -13,6 +13,10 @@ npm run dev
 npm run build
 ```
 
+Vor dem Vite-Build wird automatisch `generate:visual-manifest` ausgeführt, damit
+`src/assets/visual/manifests/visual_assets.json` dem aktuellen Asset-Stand
+entspricht.
+
 Das Projekt ist als vollständig clientseitige Vite-Anwendung aufgebaut und kann über statische Auslieferung (z. B. GitHub Pages) veröffentlicht werden.
 
 ## Visuelle Referenz

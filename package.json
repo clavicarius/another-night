@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "prebuild": "npm run generate:visual-manifest",
     "build": "vite build",
     "preview": "vite preview",
     "generate:visual-manifest": "node scripts/generate-visual-manifest.mjs",
