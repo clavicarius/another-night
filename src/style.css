@@ -307,12 +307,15 @@ p {
   font-size: clamp(1.9rem, 3vw, 3rem);
 }
 
+.camera-feed--movement strong,
 .camera-feed--bewegung strong,
 .sensor--warning strong {
   color: var(--warning);
 }
 
+.camera-feed--lost strong,
 .camera-feed--signal-verloren strong,
+.camera-feed--distortion strong,
 .camera-feed--störung strong,
 .sensor--danger strong {
   color: var(--danger);
@@ -323,6 +326,7 @@ p {
   color: var(--ok);
 }
 
+.camera-feed--unknown strong,
 .camera-feed--unbekannt strong {
   color: var(--accent);
 }

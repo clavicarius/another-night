@@ -3,12 +3,12 @@ export const TICK_INTERVAL_MS = 1000
 export const NIGHT_END_MINUTE = 6 * 60
 
 export const cameraDefinitions = [
-  { id: 'cam-01', name: 'CAM 01', location: 'Eingang', description: 'Leere Lobby, flackernde Neonröhre.' },
-  { id: 'cam-02', name: 'CAM 02', location: 'Flur', description: 'Langer Flur mit mehreren Türen.' },
-  { id: 'cam-03', name: 'CAM 03', location: 'Büro', description: 'Schreibtische, Monitore und Aktenregale.' },
-  { id: 'cam-04', name: 'CAM 04', location: 'Keller', description: 'Feuchte Stufen, schwere Metalltür.' },
-  { id: 'cam-05', name: 'CAM 05', location: 'Lager', description: 'Regale mit anonymen Kisten.' },
-  { id: 'cam-06', name: 'CAM 06', location: 'Hinterhof', description: 'Ein verschlossener Zaun im Regen.' },
+  { id: 'cam-01', name: 'CAM 01', location: 'Eingang', description: 'Empfangstresen, Glastür und rote Status-LED.' },
+  { id: 'cam-02', name: 'CAM 02', location: 'Flur', description: 'Langer Flur mit mehreren identischen Türen.' },
+  { id: 'cam-03', name: 'CAM 03', location: 'Büro', description: 'Schreibtische, Monitore und kleine Alltagsobjekte.' },
+  { id: 'cam-04', name: 'CAM 04', location: 'Keller', description: 'Feuchte Stufen, Beton und eine schwere Metalltür.' },
+  { id: 'cam-05', name: 'CAM 05', location: 'Lager', description: 'Hohe Regale, Kartons und enge Sichtachsen.' },
+  { id: 'cam-06', name: 'CAM 06', location: 'Hinterhof', description: 'Serviceeingang, Zaun und nasser Asphalt.' },
 ]
 
 export const sensorDefinitions = [
@@ -81,7 +81,7 @@ export const nightDefinitions = [
         type: 'decision',
         effects: {
           sensorUpdates: [{ id: 'motion-hall', value: 'AKTIV', severity: 'warning' }],
-          cameraUpdates: [{ id: 'cam-02', status: 'BEWEGUNG', detail: 'Etwas huscht durch den Flur.' }],
+          cameraUpdates: [{ id: 'cam-02', status: 'movement', detail: 'Etwas huscht durch den Flur.' }],
           logs: ['00:41  Bewegung erkannt – Flur 2'],
         },
         choices: [
@@ -98,7 +98,7 @@ export const nightDefinitions = [
         effects: {
           logs: ['00:42  Kamera Flur 2: keine Bewegung sichtbar'],
           sensorUpdates: [{ id: 'motion-hall', value: 'RUHIG', severity: 'normal' }],
-          cameraUpdates: [{ id: 'cam-02', status: 'NORMAL', detail: 'Der Flur ist leer. Zu leer.' }],
+          cameraUpdates: [{ id: 'cam-02', status: 'normal', detail: 'Der Flur ist leer. Zu leer.' }],
           knownFacts: ['Sensoren und Kameras widersprechen sich.'],
         },
       },
@@ -112,7 +112,7 @@ export const nightDefinitions = [
             { id: 'door-basement', value: 'OFFEN', severity: 'danger' },
             { id: 'temperature-basement', value: '-4', severity: 'danger' },
           ],
-          cameraUpdates: [{ id: 'cam-04', status: 'STÖRUNG', detail: 'Starke Interferenzen an der Kellertür.' }],
+          cameraUpdates: [{ id: 'cam-04', status: 'distortion', detail: 'Starke Interferenzen an der Kellertür.' }],
           logs: [
             '02:17  Tür geöffnet – Keller',
             '02:17  Temperatur -4 °C – Keller',
@@ -150,7 +150,7 @@ export const nightDefinitions = [
           logs: ['03:32  Unbekannte Raumreferenz – "Raum 4"'],
           knownFacts: ['Es gibt Hinweise auf einen nicht verzeichneten Raum.'],
           buildingState: [{ key: 'unknownRoomReferenced', value: true }],
-          cameraUpdates: [{ id: 'cam-05', status: 'UNBEKANNT', detail: 'Für einen Moment zeigt das Lager eine zusätzliche Tür.' }],
+          cameraUpdates: [{ id: 'cam-05', status: 'unknown', detail: 'Für einen Moment zeigt das Lager eine zusätzliche Tür.' }],
         },
       },
       {
@@ -214,7 +214,7 @@ export const nightDefinitions = [
         type: 'story',
         effects: {
           sensorUpdates: [{ id: 'motion-hall', value: 'AKTIV', severity: 'warning' }],
-          cameraUpdates: [{ id: 'cam-02', status: 'STÖRUNG', detail: 'Die Aufzeichnung springt sichtbar zwei Sekunden zurück.' }],
+          cameraUpdates: [{ id: 'cam-02', status: 'distortion', detail: 'Die Aufzeichnung springt sichtbar zwei Sekunden zurück.' }],
           logs: [
             '01:17  Bewegung erkannt – Flur 2',
             '01:18  Kamera Flur 2 wiederholt ältere Bilder',
@@ -229,7 +229,7 @@ export const nightDefinitions = [
         type: 'decision',
         effects: {
           sensorUpdates: [{ id: 'power-grid', value: '62', severity: 'danger' }],
-          cameraUpdates: [{ id: 'cam-06', status: 'SIGNAL VERLOREN', detail: 'Der Hinterhof verschwindet im Schwarz.' }],
+          cameraUpdates: [{ id: 'cam-06', status: 'lost', detail: 'Der Hinterhof verschwindet im Schwarz.' }],
           logs: [
             '02:35  Stromversorgung fällt auf 62 %',
             '02:36  Kamera Hinterhof: SIGNAL VERLOREN',
@@ -254,7 +254,7 @@ export const nightDefinitions = [
             name: 'CAM 07',
             location: 'Raum 4',
             description: 'Ein Raum ohne Bauplan, mit einer zweiten Kontrollstation.',
-            status: 'UNBEKANNT',
+            status: 'unknown',
             detail: 'Auf dem Monitor läuft deine aktuelle Schicht mit einigen Minuten Verzögerung.',
           },
           knownFacts: ['Das System kann Kameras für nicht existierende Räume anzeigen.'],

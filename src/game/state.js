@@ -10,9 +10,9 @@ const DEFAULT_PROGRESS = {
 }
 
 function createBaseCameras() {
-  return cameraDefinitions.map((camera, index) => ({
+  return cameraDefinitions.map((camera) => ({
     ...camera,
-    status: index === 0 ? 'NORMAL' : 'BEREIT',
+    status: 'normal',
     detail: camera.description,
   }))
 }
