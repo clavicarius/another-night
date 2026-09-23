@@ -1,3 +1,4 @@
+import { getVisualAsset } from '../assets/visual/registry.js'
 import { branding } from '../branding.js'
 import { formatMinute } from './engine.js'
 
@@ -29,8 +30,14 @@ function renderCameraTabs(cameras, selectedCameraId) {
 }
 
 function renderCameraFeed(camera) {
+  const imageUrl = getVisualAsset(camera.id, camera.status)
+  const imageMarkup = imageUrl
+    ? `<img class="camera-feed__image" src="${imageUrl}" alt="${camera.name} ${camera.location}" />`
+    : ''
+
   return `
     <div class="camera-feed camera-feed--${camera.status.toLowerCase().replaceAll(' ', '-')}">
+      ${imageMarkup}
       <div class="camera-feed__noise"></div>
       <div class="camera-feed__meta">
         <span>${camera.name}</span>

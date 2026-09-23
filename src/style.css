@@ -248,12 +248,18 @@ p {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
   gap: 0.65rem;
+  align-items: start;
 }
 
 .camera-tab {
   text-align: left;
   display: grid;
-  gap: 0.2rem;
+  gap: 0.1rem;
+  padding: 0.5rem 0.75rem;
+  line-height: 1.15;
+  max-height: 2.75rem;
+  overflow: hidden;
+  align-content: center;
 }
 
 .camera-feed {
@@ -267,9 +273,19 @@ p {
     linear-gradient(135deg, rgba(255, 255, 255, 0.03), transparent);
 }
 
+.camera-feed__image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
 .camera-feed__noise {
   position: absolute;
   inset: 0;
+  z-index: 1;
   background:
     linear-gradient(rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01)),
     repeating-linear-gradient(
@@ -280,12 +296,13 @@ p {
       transparent 4px
     );
   opacity: 0.7;
+  pointer-events: none;
 }
 
 .camera-feed__meta,
 .camera-feed__body {
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 
 .camera-feed__meta {
@@ -533,8 +550,9 @@ p {
   }
 
   .camera-tab {
-    padding: 0.5rem 0.6rem;
+    padding: 0.35rem 0.55rem;
     font-size: 0.85rem;
+    max-height: 2.35rem;
   }
 
   .camera-tab small {

@@ -14,8 +14,22 @@ const STATE_ALIASES = {
   lost: 'lost',
 }
 
+const CAMERA_ID_ALIASES = {
+  'cam-01': 'cam01_entrance',
+  'cam-02': 'cam02_corridor',
+  'cam-03': 'cam03_office',
+  'cam-04': 'cam04_basement',
+  'cam-05': 'cam05_storage',
+  'cam-06': 'cam06_courtyard',
+  'cam-07': 'cam07_room4',
+}
+
 function normalizeState(state) {
   return STATE_ALIASES[state] ?? state
+}
+
+function normalizeCameraId(cameraId) {
+  return CAMERA_ID_ALIASES[cameraId] ?? cameraId
 }
 
 function resolveAssetPath(relativePath) {
@@ -23,7 +37,7 @@ function resolveAssetPath(relativePath) {
 }
 
 export function getVisualCamera(cameraId) {
-  return manifest.cameras[cameraId] ?? null
+  return manifest.cameras[normalizeCameraId(cameraId)] ?? null
 }
 
 export function listVisualCameraIds() {
