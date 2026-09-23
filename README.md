@@ -36,3 +36,4 @@ Die technischen Details zu Entwicklung, Build und Hosting stehen in:
 
 - [Technische Dokumentation](./docs/technical.md)
 - [Visual Bible](./docs/visual/README.md)
+- [Asset Taxonomy](./src/assets/README.md)

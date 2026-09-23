@@ -2,6 +2,7 @@ import './style.css'
 import { branding } from './branding.js'
 import { createGameController } from './game/controller.js'
 import { createGameView } from './game/view.js'
+import './assets/visual/registry.js'
 
 const faviconLink =
   document.querySelector('link[rel="icon"]') || document.createElement('link')
