@@ -1,6 +1,17 @@
 # Another Night – Bildprompts für Kameraperspektiven
 
-Diese Prompts dienen als Grundlage für die Erstellung stimmiger Kamerabilder per KI. Ziel ist ein zusammenhängendes Setting, in dem alle Perspektiven wie Teile desselben Gebäudes wirken.
+Diese Datei bleibt als Legacy- und Kompatibilitätsreferenz erhalten.
+Die kanonische Visual Bible liegt unter `docs/visual/` und hat Vorrang:
+
+- [Visual Bible](./visual/README.md)
+- [Stil](./visual/style.md)
+- [Architektur](./visual/architecture.md)
+- [Kameras](./visual/cameras.md)
+- [Events](./visual/events.md)
+- [CAM 01 bis CAM 07](./visual/prompts/)
+
+Die Prompts unten können weiterhin als kompakte Arbeitsnotiz dienen, sollen
+aber nicht mehr die maßgebliche Quelle für das visuelle System sein.
 
 ## Globaler Stil-Prompt
 

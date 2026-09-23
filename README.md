@@ -35,4 +35,5 @@ If you’re lucky.
 Die technischen Details zu Entwicklung, Build und Hosting stehen in:
 
 - [Technische Dokumentation](./docs/technical.md)
+- [Visual Bible](./docs/visual/README.md)
 - [Bildprompts für Kameraperspektiven](./docs/camera-prompts.md)
