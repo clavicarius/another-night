@@ -17,6 +17,17 @@
 - `generated/` for runtime image assets
 - `manifests/` for machine-readable asset metadata
 
+## `fonts/`
+
+Bundled typefaces for the game UI (SIL Open Font License):
+
+- `IBM_Plex_Sans/` — UI and body text
+- `IBM_Plex_Mono/` — CCTV overlays, logs, timestamps, and status labels
+- `Share_Tech_Mono/` — optional alternative; not wired into the runtime CSS
+
+Only font files referenced via `@font-face` in `src/style.css` are included in
+the Vite build. Extra cuts may live in the folder without being shipped.
+
 ## Naming rules
 
 - Use lowercase, kebab-case, or snake_case consistently within a bucket.
@@ -29,5 +40,5 @@
 
 - `branding/` is the only place for app logo files.
 - `visual/` is the only place for camera-image assets used by the game.
-- `ui/`, `audio/`, and `fonts/` are reserved for future additions and should
-  stay empty until they are actually needed.
+- `ui/` and `audio/` are reserved for future additions and should stay empty
+  until they are actually needed.

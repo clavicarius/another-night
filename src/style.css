@@ -1,6 +1,62 @@
+@font-face {
+  font-family: 'IBM Plex Sans';
+  src: url('./assets/fonts/IBM_Plex_Sans/static/IBMPlexSans-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'IBM Plex Sans';
+  src: url('./assets/fonts/IBM_Plex_Sans/static/IBMPlexSans-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'IBM Plex Sans';
+  src: url('./assets/fonts/IBM_Plex_Sans/static/IBMPlexSans-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'IBM Plex Mono';
+  src: url('./assets/fonts/IBM_Plex_Mono/IBMPlexMono-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'IBM Plex Mono';
+  src: url('./assets/fonts/IBM_Plex_Mono/IBMPlexMono-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'IBM Plex Mono';
+  src: url('./assets/fonts/IBM_Plex_Mono/IBMPlexMono-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'IBM Plex Mono';
+  src: url('./assets/fonts/IBM_Plex_Mono/IBMPlexMono-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   color-scheme: dark;
-  font-family: Inter, system-ui, sans-serif;
+  font-family: 'IBM Plex Sans', system-ui, sans-serif;
   line-height: 1.4;
   font-weight: 400;
   background:
@@ -11,6 +67,7 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
   --bg-panel: rgba(12, 17, 29, 0.84);
   --bg-panel-strong: rgba(8, 12, 20, 0.94);
   --border: rgba(154, 169, 255, 0.2);
@@ -162,6 +219,8 @@ p {
   min-width: 8rem;
   display: grid;
   gap: 0.15rem;
+  font-family: var(--font-mono);
+  letter-spacing: 0.04em;
 }
 
 .status-box span,
@@ -266,6 +325,8 @@ p {
   max-height: 2.6rem;
   overflow: hidden;
   align-content: center;
+  font-family: var(--font-mono);
+  letter-spacing: 0.04em;
 }
 
 .camera-tab small {
@@ -323,6 +384,8 @@ p {
   padding: 1rem;
   font-size: 0.85rem;
   letter-spacing: 0.08em;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
 }
 
 .camera-feed__body {
@@ -331,6 +394,8 @@ p {
   display: grid;
   gap: 0.5rem;
   max-width: 24rem;
+  font-family: var(--font-mono);
+  letter-spacing: 0.04em;
 }
 
 .camera-feed strong {
@@ -418,8 +483,9 @@ p {
 .log-list {
   display: grid;
   gap: 0.55rem;
-  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-family: var(--font-mono);
   color: #dce3ff;
+  letter-spacing: 0.02em;
 }
 
 .sensor-list,
@@ -442,6 +508,8 @@ p {
   grid-template-columns: 1fr auto;
   gap: 0.1rem 0.5rem;
   align-items: center;
+  font-family: var(--font-mono);
+  letter-spacing: 0.03em;
 }
 
 .sensor small {
