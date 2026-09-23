@@ -69,11 +69,76 @@
       "displayName": "Corridor",
       "master": "source/masters/cam02-corridor-normal-v03.png",
       "states": {
-        "normal": [],
-        "movement": [],
-        "distortion": [],
-        "unknown": [],
-        "lost": []
+        "normal": [
+          {
+            "variant": 1,
+            "path": "generated/cam02-corridor/normal/v01.png"
+          },
+          {
+            "variant": 2,
+            "path": "generated/cam02-corridor/normal/v02.png"
+          },
+          {
+            "variant": 3,
+            "path": "generated/cam02-corridor/normal/v03.png"
+          }
+        ],
+        "movement": [
+          {
+            "variant": 1,
+            "path": "generated/cam02-corridor/movement/v01.png"
+          },
+          {
+            "variant": 2,
+            "path": "generated/cam02-corridor/movement/v02.png"
+          },
+          {
+            "variant": 3,
+            "path": "generated/cam02-corridor/movement/v03.png"
+          }
+        ],
+        "distortion": [
+          {
+            "variant": 1,
+            "path": "generated/cam02-corridor/disortion/v01.png"
+          },
+          {
+            "variant": 2,
+            "path": "generated/cam02-corridor/disortion/v02.png"
+          },
+          {
+            "variant": 3,
+            "path": "generated/cam02-corridor/disortion/v03.png"
+          }
+        ],
+        "unknown": [
+          {
+            "variant": 1,
+            "path": "generated/cam02-corridor/unknown/v01.png"
+          },
+          {
+            "variant": 2,
+            "path": "generated/cam02-corridor/unknown/v02.png"
+          },
+          {
+            "variant": 3,
+            "path": "generated/cam02-corridor/unknown/v03.png"
+          }
+        ],
+        "lost": [
+          {
+            "variant": 1,
+            "path": "generated/cam02-corridor/lost/v01.png"
+          },
+          {
+            "variant": 2,
+            "path": "generated/cam02-corridor/lost/v02.png"
+          },
+          {
+            "variant": 3,
+            "path": "generated/cam02-corridor/lost/v03.png"
+          }
+        ]
       }
     },
     "cam03_office": {
