@@ -23,3 +23,9 @@ Die kanonische Visual Bible liegt unter:
 
 Sie beschreibt globale Bildsprache, Gebäudekontinuität, Kamerarollen und die
 standardisierten Zustände für Bild- und Eventvarianten.
+
+## Asset-Taxonomie
+
+Die strukturierte Ablage für `src/assets` ist dokumentiert in:
+
+- [Asset Taxonomy](../src/assets/README.md)
