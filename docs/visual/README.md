@@ -43,9 +43,3 @@ Eskalation von Anomalien zusammenhängen.
   oder die Logik des Raums gezielt brechen.
 - Jede Unstimmigkeit muss so aussehen, als gehöre sie noch zum selben
   Gebäude.
-
-## Legacy-Hinweis
-
-`docs/camera-prompts.md` bleibt als Übergangs- und Kompatibilitätsdatei
-erhalten. Die dortigen Kurzprompts und Verweise sollen auf diese Visual Bible
-führen, nicht neben ihr eine zweite Quelle der Wahrheit bilden.
