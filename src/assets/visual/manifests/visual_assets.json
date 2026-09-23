@@ -1,0 +1,145 @@
+{
+  "version": 1,
+  "states": [
+    "normal",
+    "movement",
+    "distortion",
+    "unknown",
+    "lost"
+  ],
+  "cameraOrder": [
+    "cam01_entrance",
+    "cam02_corridor",
+    "cam03_office",
+    "cam04_basement",
+    "cam05_storage",
+    "cam06_courtyard",
+    "cam07_room4"
+  ],
+  "cameras": {
+    "cam01_entrance": {
+      "id": "cam01_entrance",
+      "slug": "cam01-entrance",
+      "displayName": "Entrance",
+      "master": "source/masters/cam01-entrance-normal-v01.png",
+      "states": {
+        "normal": [
+          {
+            "variant": 1,
+            "path": "generated/cam01-entrance/normal/v01.png"
+          }
+        ],
+        "movement": [
+          {
+            "variant": 1,
+            "path": "generated/cam01-entrance/movement/v01.png"
+          }
+        ],
+        "distortion": [
+          {
+            "variant": 1,
+            "path": "generated/cam01-entrance/disortion/v01.png"
+          }
+        ],
+        "unknown": [
+          {
+            "variant": 1,
+            "path": "generated/cam01-entrance/unknown/v01.png"
+          },
+          {
+            "variant": 2,
+            "path": "generated/cam01-entrance/unknown/v02.png"
+          },
+          {
+            "variant": 3,
+            "path": "generated/cam01-entrance/unknown/v03.png"
+          }
+        ],
+        "lost": [
+          {
+            "variant": 1,
+            "path": "generated/cam01-entrance/lost/v01.png"
+          }
+        ]
+      }
+    },
+    "cam02_corridor": {
+      "id": "cam02_corridor",
+      "slug": "cam02-corridor",
+      "displayName": "Corridor",
+      "master": "source/masters/cam02-corridor-normal-v03.png",
+      "states": {
+        "normal": [],
+        "movement": [],
+        "distortion": [],
+        "unknown": [],
+        "lost": []
+      }
+    },
+    "cam03_office": {
+      "id": "cam03_office",
+      "slug": "cam03-office",
+      "displayName": "Office",
+      "master": "source/masters/cam03-office-normal-v01.png",
+      "states": {
+        "normal": [],
+        "movement": [],
+        "distortion": [],
+        "unknown": [],
+        "lost": []
+      }
+    },
+    "cam04_basement": {
+      "id": "cam04_basement",
+      "slug": "cam04-basement",
+      "displayName": "Basement",
+      "master": "source/masters/cam04-basement-normal-v01.png",
+      "states": {
+        "normal": [],
+        "movement": [],
+        "distortion": [],
+        "unknown": [],
+        "lost": []
+      }
+    },
+    "cam05_storage": {
+      "id": "cam05_storage",
+      "slug": "cam05-storage",
+      "displayName": "Storage",
+      "master": "source/masters/cam05-storage-normal-v03.png",
+      "states": {
+        "normal": [],
+        "movement": [],
+        "distortion": [],
+        "unknown": [],
+        "lost": []
+      }
+    },
+    "cam06_courtyard": {
+      "id": "cam06_courtyard",
+      "slug": "cam06-courtyard",
+      "displayName": "Courtyard",
+      "master": "source/masters/cam06-courtyard-normal-v01.png",
+      "states": {
+        "normal": [],
+        "movement": [],
+        "distortion": [],
+        "unknown": [],
+        "lost": []
+      }
+    },
+    "cam07_room4": {
+      "id": "cam07_room4",
+      "slug": "cam07-room4",
+      "displayName": "Room 4",
+      "master": "source/masters/cam07-room4-normal-v01.png",
+      "states": {
+        "normal": [],
+        "movement": [],
+        "distortion": [],
+        "unknown": [],
+        "lost": []
+      }
+    }
+  }
+}
