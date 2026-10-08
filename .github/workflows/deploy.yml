@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - gh-pages
-      - release-preview
+      - gh-preview
   workflow_dispatch:
 
 permissions:
@@ -18,56 +18,72 @@ concurrency:
 
 jobs:
   build:
+    if: github.ref == 'refs/heads/gh-pages' || github.ref == 'refs/heads/gh-preview'
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: write
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: gh-pages
-          path: site
+          path: source
           fetch-depth: 0
       - uses: actions/checkout@v4
         with:
-          ref: release-preview
-          path: preview-source
+          path: site
           fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: npm
-          cache-dependency-path: |
-            site/package-lock.json
-            preview-source/package-lock.json
+          cache-dependency-path: source/package-lock.json
       - run: npm ci
-        working-directory: site
-      - run: npm ci
-        working-directory: preview-source
+        working-directory: source
       - run: npm run test --if-present
-        working-directory: site
-      - run: npm run test --if-present
-        working-directory: preview-source
-      - name: Set site version from Git tag
+        working-directory: source
+      - name: Set version from Git tag
         run: |
-          version_tag="$(git tag --points-at HEAD --list 'v*.*.*' | sort -V | tail -n1)"
+          version_tag="$(git -C source tag --points-at HEAD --list 'v*.*.*' | sort -V | tail -n1)"
           echo "VITE_VERSION_TAG=${version_tag:-development}" >> "$GITHUB_ENV"
-        working-directory: site
       - run: npm run build
+        working-directory: source
+      - name: Prepare site branch
+        run: |
+          if git -C site ls-remote --exit-code origin refs/heads/pages-site >/dev/null 2>&1; then
+            git -C site fetch origin pages-site
+            git -C site checkout -B pages-site FETCH_HEAD
+          else
+            git -C site checkout --orphan pages-site
+            git -C site rm -rf . || true
+            git -C site clean -fdx
+          fi
+      - name: Update deployed site
+        run: |
+          if [[ "$GITHUB_REF" == "refs/heads/gh-pages" ]]; then
+            find . -mindepth 1 -maxdepth 1 ! -name .git ! -name preview -exec rm -rf -- {} +
+            cp -a ../source/dist/. .
+          elif [[ "$GITHUB_REF" == "refs/heads/gh-preview" ]]; then
+            rm -rf preview
+            mkdir -p preview
+            cp -a ../source/dist/. preview/
+          else
+            echo "Deployment must run from gh-pages or gh-preview." >&2
+            exit 1
+          fi
         working-directory: site
-      - name: Set preview version from Git tag
+      - name: Publish site artifact
         run: |
-          version_tag="$(git tag --points-at HEAD --list 'v*.*.*' | sort -V | tail -n1)"
-          echo "VITE_VERSION_TAG=${version_tag:-development}" >> "$GITHUB_ENV"
-        working-directory: preview-source
-      - run: npm run build
-        working-directory: preview-source
-      - name: Add preview to Pages artifact
-        run: |
-          mkdir -p site/dist/preview
-          cp -a preview-source/dist/. site/dist/preview/
+          git -C site add --all
+          if ! git -C site diff --cached --quiet; then
+            git -C site config user.name "github-actions[bot]"
+            git -C site config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git -C site commit -m "Update deployed site from ${GITHUB_REF_NAME}"
+            git -C site push origin HEAD:pages-site
+          fi
+          mkdir -p site-artifact
+          git -C site archive HEAD | tar -x -C site-artifact
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: site/dist
+          path: site-artifact
 
   deploy:
     needs: build
