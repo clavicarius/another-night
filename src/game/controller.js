@@ -22,10 +22,24 @@ export function createGameController(view) {
     },
   })
 
+  function onKeyDown(event) {
+    if (event.defaultPrevented || event.altKey || event.ctrlKey || event.metaKey) return
+    if (state.gameplay.phase === 'intro' || !/^[1-7]$/.test(event.key)) return
+    if (event.target?.isContentEditable || event.target?.closest?.('input, textarea, select')) return
+
+    const camera = state.gameplay.cameras[Number(event.key) - 1]
+    if (camera) engine.selectCamera(camera.id)
+  }
+
   return {
     start() {
       saveProgress(progress)
+      window.addEventListener('keydown', onKeyDown)
       engine.start()
+    },
+    destroy() {
+      window.removeEventListener('keydown', onKeyDown)
+      engine.destroy()
     },
     getState() {
       return state
