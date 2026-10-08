@@ -111,6 +111,7 @@ function applyChoice(state, event, choice) {
   }
 
   progress.decisions[choice.id] = true
+  applyEffects(state, choice.effects)
   gameplay.decisionHistory.unshift({
     timestamp: formatMinute(gameplay.currentMinute),
     eventId: event.id,

@@ -120,7 +120,16 @@ export const nightDefinitions = [
           ],
         },
         choices: [
-          { id: 'lock_basement', label: 'Keller verriegeln', outcome: 'Das Schloss greift hörbar, obwohl niemand auf der Kamera zu sehen ist.' },
+          {
+            id: 'lock_basement',
+            label: 'Keller verriegeln',
+            outcome: 'Das Schloss greift hörbar, obwohl niemand auf der Kamera zu sehen ist.',
+            effects: {
+              sensorUpdates: [{ id: 'door-basement', value: 'VERRIEGELT', severity: 'normal' }],
+              cameraUpdates: [{ id: 'cam-04', status: 'NORMAL', detail: 'Die Kellertür ist verriegelt, das Rauschen klingt ab.' }],
+              logs: ['02:17  Verriegelung bestätigt – Keller'],
+            },
+          },
           { id: 'inspect_basement_camera', label: 'Kamera fokussieren', outcome: 'Zwischen dem Rauschen steht für einen Frame eine zweite Tür im Bild.' },
           { id: 'ignore_movement', label: 'Ignorieren', outcome: 'Die Temperatur fällt weiter. Im Log erscheint kein weiterer Fehler.' },
         ],
