@@ -2,7 +2,7 @@
 
 Atmosphärisches, storygetriebenes Browsergame über eine mysteriöse Nachtschicht.
 
-![logo](./src/assets/another-night-applogo.png)
+![logo](./src/assets/branding/another-night-applogo.png)
 
 - [Hosted app (GitHub Pages)](https://clavicarius.github.io/another-night/)
 
