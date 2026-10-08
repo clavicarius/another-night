@@ -187,6 +187,8 @@ export function createGameView(root) {
       const selectedCamera =
         state.gameplay.cameras.find((camera) => camera.id === state.ui.selectedCameraId) ??
         state.gameplay.cameras[0]
+      const panelBodyScrollTop = root.querySelector('.panel__body')?.scrollTop ?? 0
+      const sensorListScrollTop = root.querySelector('.sensor-list')?.scrollTop ?? 0
 
       root.innerHTML = `
         <div class="shell" style="--brand-watermark: url('${branding.emblem}')">
@@ -333,6 +335,11 @@ export function createGameView(root) {
           </footer>
         </div>
       `
+
+      const panelBody = root.querySelector('.panel__body')
+      const sensorList = root.querySelector('.sensor-list')
+      if (panelBody) panelBody.scrollTop = panelBodyScrollTop
+      if (sensorList) sensorList.scrollTop = sensorListScrollTop
     },
   }
 }
