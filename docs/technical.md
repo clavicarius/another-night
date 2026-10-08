@@ -21,15 +21,15 @@ Das Projekt ist als vollständig clientseitige Vite-Anwendung aufgebaut und kann
 
 ## Veröffentlichung auf GitHub Pages
 
-GitHub Pages wird über GitHub Actions veröffentlicht. Ein Push auf `gh-pages`
-baut und aktualisiert die Hauptversion; ein Push auf `gh-preview` baut und
-aktualisiert nur die Variante unter
-[`/preview`](https://clavicarius.github.io/another-night/preview/). Der Workflow
-speichert die jeweils aktuelle vollständige Website im Branch `pages-site` und
-aktualisiert darin nur den zum auslösenden Branch gehörenden Teil. So kann
-GitHub Pages weiterhin ein vollständiges Artefakt veröffentlichen, ohne dass
-ein Deployment die andere Variante überschreibt. Die Läufe sind serialisiert,
-damit gleichzeitige Aktualisierungen nicht verloren gehen.
+GitHub Pages wird über GitHub Actions veröffentlicht. Externe Prozesse
+aktualisieren die Branches `gh-pages` (Hauptversion) und `gh-preview`
+(Vorschauversion). Bei einem Push auf einen dieser Branches baut der Workflow
+beide Branches und veröffentlicht `gh-pages` unter
+[`/`](https://clavicarius.github.io/another-night/) sowie `gh-preview` unter
+[`/preview`](https://clavicarius.github.io/another-night/preview/). Dadurch
+enthält jedes Pages-Artefakt beide Versionen. Der Workflow liest die Branches
+nur und erstellt keine Commits oder Pushes ins Repository. Die Läufe sind
+serialisiert, damit gleichzeitige Aktualisierungen nicht verloren gehen.
 
 Änderungen an `main` oder das Erstellen eines Versions-Tags aktualisieren die
 veröffentlichte Version nicht. Die Workflow-Konfiguration muss in beiden
