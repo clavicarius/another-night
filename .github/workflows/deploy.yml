@@ -2,16 +2,9 @@ name: Build and Deploy to GitHub Pages
 
 on:
   push:
-    tags:
-      - "v*.*.*"
+    branches:
+      - gh-pages
   workflow_dispatch:
-  workflow_call:
-    inputs:
-      version-tag:
-        description: Full release tag (vX.Y.Z) for VITE_VERSION_TAG
-        required: false
-        type: string
-        default: ""
 
 permissions:
   contents: read
@@ -37,13 +30,8 @@ jobs:
       - run: npm ci
       - run: npm run test --if-present
       - name: Set version from Git tag
-        env:
-          INPUT_VERSION_TAG: ${{ inputs.version-tag }}
         run: |
-          version_tag="${INPUT_VERSION_TAG:-}"
-          if [ -z "$version_tag" ]; then
-            version_tag="$(git tag --points-at "$GITHUB_SHA" --list 'v*.*.*' | sort -V | tail -n1)"
-          fi
+          version_tag="$(git tag --points-at "$GITHUB_SHA" --list 'v*.*.*' | sort -V | tail -n1)"
           echo "VITE_VERSION_TAG=${version_tag:-development}" >> "$GITHUB_ENV"
       - run: npm run build
       - uses: actions/upload-pages-artifact@v3
