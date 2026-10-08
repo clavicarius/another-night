@@ -268,6 +268,12 @@ export function createGameView(root) {
               ? `
                 <main class="grid">
                   <section class="monitor">
+                    <section class="sensor-dashboard">
+                      <h3>Sensoren</h3>
+                      <ul class="sensor-list">
+                        ${renderSensors(state.gameplay.sensors)}
+                      </ul>
+                    </section>
                     <div class="camera-tabs">
                       ${renderCameraTabs(state.gameplay.cameras, selectedCamera.id)}
                     </div>
@@ -291,13 +297,6 @@ export function createGameView(root) {
                               : renderFacts(state.progress.knownFacts)
                         }
                       </div>
-                    </section>
-
-                    <section class="panel">
-                      <h3>Sensoren</h3>
-                      <ul class="sensor-list">
-                        ${renderSensors(state.gameplay.sensors)}
-                      </ul>
                     </section>
 
                     <section class="panel">

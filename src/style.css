@@ -313,6 +313,15 @@ p {
   gap: 0.65rem;
 }
 
+.sensor-dashboard {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.sensor-dashboard h3 {
+  font-size: 0.95rem;
+}
+
 .camera-tabs {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
@@ -492,10 +501,15 @@ p {
   letter-spacing: 0.02em;
 }
 
-.sensor-list,
 .decision-history {
   display: grid;
   gap: 0.65rem;
+}
+
+.sensor-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr));
+  gap: 0.55rem;
 }
 
 .sensor,
@@ -509,20 +523,21 @@ p {
 
 .sensor {
   display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 0.1rem 0.5rem;
-  align-items: center;
+  grid-template-rows: auto 1fr auto;
+  gap: 0.15rem 0.5rem;
+  align-items: start;
+  min-height: 6rem;
   font-family: var(--font-mono);
   letter-spacing: 0.03em;
 }
 
 .sensor small {
-  grid-column: 1;
+  grid-row: 2;
 }
 
 .sensor strong {
-  grid-column: 2;
-  grid-row: 1 / span 2;
+  grid-row: 3;
+  font-size: 1.35rem;
 }
 
 .document-card {
@@ -622,7 +637,12 @@ p {
   }
 
   .monitor {
-    grid-template-rows: auto minmax(0, 1fr) auto;
+    grid-template-rows: auto auto minmax(0, 1fr) auto;
+  }
+
+  .sensor {
+    min-height: 4.5rem;
+    padding: 0.45rem 0.6rem;
   }
 
   .camera-tabs {
@@ -670,7 +690,7 @@ p {
   }
 
   .sidebar {
-    grid-template-rows: minmax(0, 1.05fr) minmax(0, 0.8fr) minmax(0, 0.95fr);
+    grid-template-rows: minmax(0, 1.3fr) minmax(0, 0.7fr);
     gap: 0.5rem;
   }
 
@@ -694,7 +714,6 @@ p {
     padding: 0.55rem 0.7rem;
   }
 
-  .sensor-list,
   .decision-history {
     min-height: 0;
     overflow: auto;
