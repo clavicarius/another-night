@@ -1,3 +1,4 @@
+import { getVisualAsset } from '../assets/visual/registry.js'
 import { branding } from '../branding.js'
 import { formatMinute } from './engine.js'
 
@@ -29,8 +30,14 @@ function renderCameraTabs(cameras, selectedCameraId) {
 }
 
 function renderCameraFeed(camera) {
+  const imageUrl = getVisualAsset(camera.id, camera.status)
+  const imageMarkup = imageUrl
+    ? `<img class="camera-feed__image" src="${imageUrl}" alt="${camera.name} ${camera.location}" />`
+    : ''
+
   return `
     <div class="camera-feed camera-feed--${camera.status.toLowerCase().replaceAll(' ', '-')}">
+      ${imageMarkup}
       <div class="camera-feed__noise"></div>
       <div class="camera-feed__meta">
         <span>${camera.name}</span>
@@ -180,6 +187,8 @@ export function createGameView(root) {
       const selectedCamera =
         state.gameplay.cameras.find((camera) => camera.id === state.ui.selectedCameraId) ??
         state.gameplay.cameras[0]
+      const panelBodyScrollTop = root.querySelector('.panel__body')?.scrollTop ?? 0
+      const sensorListScrollTop = root.querySelector('.sensor-list')?.scrollTop ?? 0
 
       root.innerHTML = `
         <div class="shell" style="--brand-watermark: url('${branding.emblem}')">
@@ -259,6 +268,12 @@ export function createGameView(root) {
               ? `
                 <main class="grid">
                   <section class="monitor">
+                    <section class="sensor-dashboard">
+                      <h3>Sensoren</h3>
+                      <ul class="sensor-list">
+                        ${renderSensors(state.gameplay.sensors)}
+                      </ul>
+                    </section>
                     <div class="camera-tabs">
                       ${renderCameraTabs(state.gameplay.cameras, selectedCamera.id)}
                     </div>
@@ -282,13 +297,6 @@ export function createGameView(root) {
                               : renderFacts(state.progress.knownFacts)
                         }
                       </div>
-                    </section>
-
-                    <section class="panel">
-                      <h3>Sensoren</h3>
-                      <ul class="sensor-list">
-                        ${renderSensors(state.gameplay.sensors)}
-                      </ul>
                     </section>
 
                     <section class="panel">
@@ -326,6 +334,11 @@ export function createGameView(root) {
           </footer>
         </div>
       `
+
+      const panelBody = root.querySelector('.panel__body')
+      const sensorList = root.querySelector('.sensor-list')
+      if (panelBody) panelBody.scrollTop = panelBodyScrollTop
+      if (sensorList) sensorList.scrollTop = sensorListScrollTop
     },
   }
 }
