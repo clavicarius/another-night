@@ -5,7 +5,6 @@ Atmosphärisches, storygetriebenes Browsergame über eine mysteriöse Nachtschic
 ![logo](./src/assets/branding/another-night-applogo.png)
 
 - [Hosted site (GitHub Pages)](https://clavicarius.github.io/another-night/)
-- [Game preview](https://clavicarius.github.io/another-night/preview/)
 
 ## Teaser
 
