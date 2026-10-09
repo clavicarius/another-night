@@ -2,18 +2,90 @@
 <html lang="de">
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Another Night - ein atmosphärisches Überwachungs- und Mystery-Browsergame."
+      content="Another Night – ein atmosphärisches Mystery-Browsergame. Die aktuelle Vorschau ist hier verfügbar."
     />
     <title>Another Night</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        display: grid;
+        min-height: 100vh;
+        margin: 0;
+        padding: 2rem 1.25rem;
+        place-items: center;
+        background: #111318;
+        color: #f2f0e9;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+      }
+
+      main {
+        width: min(100%, 42rem);
+        padding: clamp(1.5rem, 6vw, 3.5rem);
+        border: 1px solid #393a3c;
+        background: #191a1d;
+      }
+
+      p {
+        color: #c3c1ba;
+        font-size: 1.1rem;
+        line-height: 1.7;
+      }
+
+      .eyebrow {
+        color: #d5a85b;
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        margin: 0.75rem 0;
+        font-size: clamp(2.5rem, 10vw, 4.5rem);
+        line-height: 1;
+      }
+
+      nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem 1.5rem;
+        margin-top: 2rem;
+      }
+
+      a {
+        color: #e2bb75;
+        font-weight: 700;
+      }
+
+      a:focus-visible {
+        outline: 3px solid #f2f0e9;
+        outline-offset: 4px;
+      }
+    </style>
   </head>
   <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
+    <main>
+      <p class="eyebrow">Another Night</p>
+      <h1>Deine Schicht beginnt um Mitternacht.</h1>
+      <p>
+        Überwache das Gebäude bis 06:00 Uhr. Kameras, Sensoren und Türen
+        erzählen nicht immer dieselbe Geschichte.
+      </p>
+      <p>
+        Das Spiel befindet sich in Entwicklung. Die aktuelle Vorschau ist
+        verfügbar.
+      </p>
+      <nav aria-label="Weitere Informationen">
+        <a href="./preview/">Vorschau ansehen</a>
+        <a href="https://github.com/clavicarius/another-night">Projekt auf GitHub</a>
+      </nav>
+    </main>
   </body>
-  </html>
+</html>
