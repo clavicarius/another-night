@@ -22,20 +22,23 @@ Das Projekt ist als vollständig clientseitige Vite-Anwendung aufgebaut und kann
 ## Veröffentlichung auf GitHub Pages
 
 GitHub Pages wird über GitHub Actions veröffentlicht. Externe Prozesse
-aktualisieren die Branches `gh-pages` und `gh-preview`. Bei einem Push auf
-einen dieser Branches baut der Workflow beide Branches und veröffentlicht die
-statische Startseite aus `gh-pages` unter
+aktualisieren die Branches `gh-pages` und `gh-preview`. Jeder Push oder Merge
+nach `gh-preview` löst das Deployment aus. Bei einem Push auf `gh-pages` oder
+`gh-preview` baut der Workflow beide Branches und veröffentlicht die statische
+Startseite aus `gh-pages` unter
 [`/`](https://clavicarius.github.io/another-night/) sowie das Spiel aus
 `gh-preview` unter
 [`/preview`](https://clavicarius.github.io/another-night/preview/). Dadurch
 enthält jedes Pages-Artefakt beide Inhalte. Der Workflow liest die Branches
 nur und erstellt keine Commits oder Pushes ins Repository. Die Läufe sind
 serialisiert, damit gleichzeitige Aktualisierungen nicht verloren gehen.
+Die Preview wird absichtlich nicht auf der Hauptseite angezeigt oder verlinkt.
 
-Änderungen an `main` oder das Erstellen eines Versions-Tags aktualisieren die
-veröffentlichte Version nicht. Die Workflow-Konfiguration muss in beiden
-Deployment-Branches vorhanden sein. In den Repository-Einstellungen muss als
-Pages-Quelle „GitHub Actions“ ausgewählt sein.
+Änderungen an `main` deployen nicht automatisch; erst ein Push oder Merge in
+`gh-preview` veröffentlicht eine neue Preview. Das Erstellen eines Versions-
+Tags aktualisiert die veröffentlichte Version ebenfalls nicht. Die Workflow-
+Konfiguration muss in beiden Deployment-Branches vorhanden sein. In den
+Repository-Einstellungen muss als Pages-Quelle „GitHub Actions“ ausgewählt sein.
 
 ## Visuelle Referenz
 
