@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - gh-pages
-      - gh-preview
+      - main
   workflow_dispatch:
 
 permissions:
@@ -29,7 +29,7 @@ jobs:
           fetch-depth: 0
       - uses: actions/checkout@v4
         with:
-          ref: gh-preview
+          ref: main
           path: preview-source
           fetch-depth: 0
       - uses: actions/setup-node@v4
