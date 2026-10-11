@@ -21,24 +21,43 @@ Das Projekt ist als vollständig clientseitige Vite-Anwendung aufgebaut und kann
 
 ## Veröffentlichung auf GitHub Pages
 
-GitHub Pages wird über GitHub Actions veröffentlicht. Externe Prozesse
-aktualisieren die Branches `gh-pages` und `gh-preview`. Jeder Push oder Merge
-nach `gh-preview` löst das Deployment aus. Bei einem Push auf `gh-pages` oder
-`gh-preview` baut der Workflow beide Branches und veröffentlicht die statische
-Startseite aus `gh-pages` unter
-[`/`](https://clavicarius.github.io/another-night/) sowie das Spiel aus
-`gh-preview` unter
+GitHub Pages wird über GitHub Actions veröffentlicht. Jeder Push oder Merge
+nach `gh-pages` oder `main` löst das Deployment aus. Der Workflow baut beide
+Branches und veröffentlicht die offizielle App aus `gh-pages` unter
+[`/`](https://clavicarius.github.io/another-night/) sowie die Preview aus
+`main` unter
 [`/preview`](https://clavicarius.github.io/another-night/preview/). Dadurch
-enthält jedes Pages-Artefakt beide Inhalte. Der Workflow liest die Branches
-nur und erstellt keine Commits oder Pushes ins Repository. Die Läufe sind
-serialisiert, damit gleichzeitige Aktualisierungen nicht verloren gehen.
+enthält jedes Pages-Artefakt beide Inhalte. Die offizielle Version wird
+ausschließlich aus `gh-pages` erzeugt; Änderungen an `main` verändern sie
+nicht. Der Workflow liest die Branches nur und erstellt keine Commits oder
+Pushes ins Repository. Die Läufe sind serialisiert, damit gleichzeitige
+Aktualisierungen nicht verloren gehen.
 Die Preview wird absichtlich nicht auf der Hauptseite angezeigt oder verlinkt.
 
-Änderungen an `main` deployen nicht automatisch; erst ein Push oder Merge in
-`gh-preview` veröffentlicht eine neue Preview. Das Erstellen eines Versions-
-Tags aktualisiert die veröffentlichte Version ebenfalls nicht. Die Workflow-
-Konfiguration muss in beiden Deployment-Branches vorhanden sein. In den
-Repository-Einstellungen muss als Pages-Quelle „GitHub Actions“ ausgewählt sein.
+Das Erstellen eines Versions-Tags aktualisiert die veröffentlichte Version
+nicht. Die Workflow-Konfiguration muss in beiden Deployment-Branches
+vorhanden sein. In den Repository-Einstellungen muss als Pages-Quelle
+„GitHub Actions“ ausgewählt sein.
+
+### Änderungen nach `gh-pages` bringen
+
+Pushes nach `gh-pages` müssen Fast-Forward sein. Das Ruleset
+[`.github/rulesets/gh-pages.json`](../.github/rulesets/gh-pages.json) blockiert
+Force-Pushes und das Löschen des Branches. Es muss unter Settings → Rules →
+Rulesets → Import a ruleset einmalig importiert werden.
+
+Veröffentlichen einer Version:
+
+```
+git checkout gh-pages
+git pull
+git merge --ff-only main   # oder: git cherry-pick <commit>
+git push origin gh-pages
+```
+
+Alternativ per Pull Request nach `gh-pages`. Bricht `--ff-only` ab, muss
+`gh-pages` zuerst in `main` gemergt oder `main` auf `gh-pages` rebased werden.
+Ein Rollback erfolgt per `git revert <commit>` und normalem Push.
 
 ## Visuelle Referenz
 
