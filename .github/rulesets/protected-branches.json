@@ -1,0 +1,23 @@
+{
+  "name": "main/develop require branch name check",
+  "target": "branch",
+  "enforcement": "active",
+  "conditions": {
+    "ref_name": {
+      "include": ["refs/heads/main", "refs/heads/develop"],
+      "exclude": []
+    }
+  },
+  "rules": [
+    {
+      "type": "required_status_checks",
+      "parameters": {
+        "strict_required_status_checks_policy": false,
+        "required_status_checks": [
+          { "context": "Validate branch name" }
+        ]
+      }
+    }
+  ],
+  "bypass_actors": []
+}
