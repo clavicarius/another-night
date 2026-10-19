@@ -8,7 +8,7 @@ Jeder Pull Request wird vom Workflow `.github/workflows/validate-branch-name.yml
 ^(feature|enhancement|bugfix|hotfix|release|chore)\/[a-z0-9._-]+$
 ```
 
-Erlaubte Präfixe: `feature/`, `enhancement/`, `bugfix/`, `hotfix/`, `release/`, `chore/`.
+Erlaubte Präfixe: `feature/`, `enhancement/`, `bugfix/`, `hotfix/`, `release/`, `chore/`, `copilot/`.
 Der Rest besteht nur aus Kleinbuchstaben, Ziffern, `.`, `_` und `-`. Ticket-IDs sind optional, z. B. `bugfix/proj-991-nullpointer-fix`.
 
 ## Beispiele
