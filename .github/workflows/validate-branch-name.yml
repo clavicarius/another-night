@@ -1,0 +1,28 @@
+name: Validate Branch Name
+
+on:
+  pull_request:
+    types: [opened, reopened, synchronize, edited]
+
+permissions:
+  contents: read
+
+jobs:
+  validate-branch-name:
+    name: Validate branch name
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check branch naming convention
+        env:
+          BRANCH_NAME: ${{ github.head_ref }}
+        run: |
+          pattern='^(feature|enhancement|bugfix|hotfix|release|chore|copilot)/[a-z0-9._-]+$'
+          if [[ ! "$BRANCH_NAME" =~ $pattern ]]; then
+            echo "::error::Branch name '$BRANCH_NAME' violates the naming convention."
+            echo "Expected: <prefix>/<name> with prefix one of feature, enhancement, bugfix, hotfix, release, chore, copilot"
+            echo "and name consisting only of lowercase letters, digits, '.', '_' and '-'."
+            echo "Regex: $pattern"
+            echo "Examples: feature/add-login-page, bugfix/proj-991-nullpointer-fix, release/v2.4.0"
+            exit 1
+          fi
+          echo "Branch name '$BRANCH_NAME' is valid."
